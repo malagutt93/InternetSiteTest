@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMINA Studio • Fotografia d'Autore & Ritratti</title>
+  <meta name="description" content="Portfolio fotografico moderno di Alex Vance. Ritratti, paesaggi, street photography e architettura.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>">
+
+  <!-- Tailwind CSS via CDN con Dark Mode class-based -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 transition-colors duration-300 selection:bg-amber-400 selection:text-neutral-950">
+
+  <!-- ======================================================
+       BARRA DI NAVIGAZIONE
+       ====================================================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-4 px-6 md:px-12 bg-transparent">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 flex items-center justify-center font-bold text-sm tracking-tighter group-hover:scale-105 transition-transform">
+          L
+        </div>
+        <span class="font-serif text-xl tracking-wider font-semibold group-hover:text-amber-500 transition-colors">
+          LUMINA <span class="text-xs tracking-widest font-sans font-normal opacity-70">STUDIO</span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#hero" class="hover:text-amber-500 transition-colors">Home</a>
+        <a href="#galleria" class="hover:text-amber-500 transition-colors">Galleria</a>
+        <a href="#chi-sono" class="hover:text-amber-500 transition-colors">Chi Sono</a>
+        <a href="#contatti" class="hover:text-amber-500 transition-colors">Contatti</a>
+      </nav>
+
+      <!-- Azioni: Theme Toggle + CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <!-- Theme Toggle Button -->
+        <button type="button" class="theme-toggle-btn p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Cambia tema chiaro/scuro">
+          <!-- Sole per dark mode -->
+          <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <!-- Luna per light mode -->
+          <svg class="w-5 h-5 block dark:hidden text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <a href="#contatti" class="px-5 py-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200 text-xs font-semibold tracking-wider uppercase transition-all shadow-sm">
+          Prenota Sessione
+        </a>
+      </div>
+
+      <!-- Mobile Menu & Theme Button -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button type="button" class="theme-toggle-btn p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Cambia tema">
+          <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-5 h-5 block dark:hidden text-neutral-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors" aria-label="Apri menu di navigazione" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden mt-3 p-5 rounded-2xl bg-white/95 dark:bg-neutral-900/95 backdrop-blur-lg border border-neutral-200/50 dark:border-neutral-800/50 shadow-xl transition-all">
+      <nav class="flex flex-col gap-4 text-base font-medium">
+        <a href="#hero" class="hover:text-amber-500 transition-colors">Home</a>
+        <a href="#galleria" class="hover:text-amber-500 transition-colors">Galleria</a>
+        <a href="#chi-sono" class="hover:text-amber-500 transition-colors">Chi Sono</a>
+        <a href="#contatti" class="hover:text-amber-500 transition-colors">Contatti</a>
+        <a href="#contatti" class="w-full text-center py-2.5 rounded-xl bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-950 font-semibold text-sm mt-2">
+          Prenota Sessione
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================
+         HERO SECTION D'IMPATTO
+         ====================================================== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
+      <!-- Immagine di sfondo con overlay gradiente -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2000&q=85" 
+          alt="Fotografo al lavoro nella nebbia" 
+          class="w-full h-full object-cover object-center filter brightness-[0.6] dark:brightness-[0.38] scale-105 transform animate-pulse-slow"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-50 via-neutral-900/30 to-neutral-900/80 dark:from-neutral-950 dark:via-neutral-950/60 dark:to-black/80"></div>
+      </div>
+
+      <!-- Contenuto Hero -->
+      <div class="relative z-10 max-w-4xl mx-auto text-center text-white">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs tracking-widest uppercase font-medium mb-6 text-amber-300">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+          Fotografia Artistica & Commerciale
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+          Catturare la luce,<br><span class="italic font-light text-neutral-200">rivelare l'anima.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-xl text-neutral-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+          Esploro le sfumature della realtà attraverso una visione essenziale e senza tempo. Dai ritratti intimi ai grandi paesaggi silenziosi.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#galleria" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-amber-400 hover:bg-amber-300 text-neutral-950 font-semibold text-sm tracking-wide transition-all shadow-lg hover:shadow-amber-400/25">
+            Esplora Galleria
+          </a>
+          <a href="#contatti" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 font-medium text-sm tracking-wide transition-all">
+            Richiedi un Preventivo
+          </a>
+        </div>
+
+        <!-- Numeri & Statistiche Hero -->
+        <div class="grid grid-cols-3 gap-6 sm:gap-12 mt-16 pt-10 border-t border-white/15 max-w-2xl mx-auto">
+          <div>
+            <div class="font-serif text-3xl sm:text-4xl font-bold text-amber-400">12+</div>
+            <div class="text-xs sm:text-sm text-neutral-300 font-light mt-1">Anni di Attività</div>
+          </div>
+          <div>
+            <div class="font-serif text-3xl sm:text-4xl font-bold text-amber-400">350+</div>
+            <div class="text-xs sm:text-sm text-neutral-300 font-light mt-1">Progetti Realizzati</div>
+          </div>
+          <div>
+            <div class="font-serif text-3xl sm:text-4xl font-bold text-amber-400">18</div>
+            <div class="text-xs sm:text-sm text-neutral-300 font-light mt-1">Riconoscimenti</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Freccia Scroll giù -->
+      <a href="#galleria" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 hover:text-amber-400 transition-colors hidden sm:block animate-bounce" aria-label="Scorri giù">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ======================================================
+         GALLERIA FOTOGRAFICA CON FILTRI E LIGHTBOX
+         ====================================================== -->
+    <section id="galleria" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase font-semibold tracking-widest text-amber-500 mb-2 block">Portfolio Selezionato</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-4">Opere & Prospettive</h2>
+        <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 font-light">
+          Una collezione di momenti catturati in giro per il mondo. Clicca su qualsiasi fotografia per aprirla nel visore lightbox ad alta risoluzione con i dettagli tecnici dello scatto.
+        </p>
+      </div>
+
+      <!-- Filtri Categorie -->
+      <div class="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-12">
+        <button class="filter-btn active px-5 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300" data-filter="all">
+          Tutti gli Scatti
+        </button>
+        <button class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300" data-filter="portrait">
+          Ritratti
+        </button>
+        <button class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300" data-filter="landscape">
+          Paesaggi
+        </button>
+        <button class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300" data-filter="street">
+          Street & Night
+        </button>
+        <button class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300" data-filter="architecture">
+          Architettura
+        </button>
+        <button class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300" data-filter="events">
+          Eventi
+        </button>
+      </div>
+
+      <!-- Griglia Galleria Dinamica -->
+      <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Generato dinamicamente via app.js -->
+      </div>
+    </section>
+
+    <!-- ======================================================
+         SEZIONE "CHI SONO" (ABOUT ME)
+         ====================================================== -->
+    <section id="chi-sono" class="py-24 bg-neutral-100 dark:bg-neutral-900/60 border-y border-neutral-200/60 dark:border-neutral-800/60 transition-colors">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Foto Autore -->
+        <div class="lg:col-span-5 relative group">
+          <div class="relative overflow-hidden rounded-3xl aspect-[4/5] shadow-2xl">
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85" 
+              alt="Alex Vance - Fotografo" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <p class="font-serif text-xl font-bold">Alex Vance</p>
+              <p class="text-xs text-neutral-300 font-light">Fondatore & Fotografo Principale</p>
+            </div>
+          </div>
+          <!-- Elemento decorativo cornici -->
+          <div class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-amber-400/40 rounded-3xl -z-10 hidden sm:block"></div>
+        </div>
+
+        <!-- Biografia & Filosofia -->
+        <div class="lg:col-span-7 flex flex-col justify-center">
+          <span class="text-xs uppercase font-semibold tracking-widest text-amber-500 mb-2 block">Dietro l'Obiettivo</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-6 leading-tight">
+            "La fotografia non è ciò che si vede, ma come lo si fa sentire."
+          </h2>
+
+          <div class="space-y-4 text-neutral-600 dark:text-neutral-300 text-sm sm:text-base leading-relaxed font-light">
+            <p>
+              Nato a Milano e con oltre un decennio trascorso viaggiando tra Europa, Asia e Nord America, ho dedicato la mia vita alla ricerca della composizione perfetta e della luce naturale nella sua forma più sincera.
+            </p>
+            <p>
+              Collaboro regolarmente con brand internazionali, riviste editoriali di moda e committenti privati che cercano una narrazione visiva sofisticata, lontana dai trend effimeri e radicata nell'estetica classica.
+            </p>
+          </div>
+
+          <!-- Feature Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+            <div class="p-4 rounded-2xl bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/60 shadow-sm">
+              <h3 class="font-bold text-sm mb-1 text-neutral-900 dark:text-white flex items-center gap-2">
+                <span class="text-amber-500">✦</span> Stile Editoriale & Fine Art
+              </h3>
+              <p class="text-xs text-neutral-500 dark:text-neutral-400">
+                Attenzione meticolosa al color grading e alla texture visiva di ogni singolo scatto.
+              </p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/60 shadow-sm">
+              <h3 class="font-bold text-sm mb-1 text-neutral-900 dark:text-white flex items-center gap-2">
+                <span class="text-amber-500">✦</span> Attrezzatura Cinema & Medium Format
+              </h3>
+              <p class="text-xs text-neutral-500 dark:text-neutral-400">
+                Scatti realizzati con sensori ad altissima risoluzione per stampe d'arte fino a 3 metri.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         MODULO CONTATTI RESPONSIVE CON MODALITÀ SCURA
+         ====================================================== -->
+    <section id="contatti" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Info & Recapiti -->
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <span class="text-xs uppercase font-semibold tracking-widest text-amber-500 mb-2 block">Parliamo del tuo Progetto</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold mb-6 leading-tight">Inizia una nuova visione</h2>
+            <p class="text-neutral-600 dark:text-neutral-400 font-light text-sm sm:text-base mb-8">
+              Hai in mente un servizio fotografico editoriale, commerciale o un evento speciale? Compila il modulo o contattami direttamente via email o telefono.
+            </p>
+
+            <div class="space-y-6 text-sm">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 text-amber-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Email Studio</h4>
+                  <p class="font-medium text-neutral-900 dark:text-neutral-100">info@luminastudio.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 text-amber-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Studio & Sede</h4>
+                  <p class="font-medium text-neutral-900 dark:text-neutral-100">Via Tortona 31, 20144 Milano (MI), Italia</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 text-amber-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Disponibilità</h4>
+                  <p class="font-medium text-neutral-900 dark:text-neutral-100">Aperto a trasferte internazionali su prenotazione</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Quick Links -->
+          <div class="flex items-center gap-4 mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-800">
+            <a href="#" class="text-xs uppercase font-semibold text-neutral-500 hover:text-amber-500 transition-colors">Instagram</a>
+            <span class="text-neutral-300 dark:text-neutral-700">•</span>
+            <a href="#" class="text-xs uppercase font-semibold text-neutral-500 hover:text-amber-500 transition-colors">Behance</a>
+            <span class="text-neutral-300 dark:text-neutral-700">•</span>
+            <a href="#" class="text-xs uppercase font-semibold text-neutral-500 hover:text-amber-500 transition-colors">500px</a>
+            <span class="text-neutral-300 dark:text-neutral-700">•</span>
+            <a href="#" class="text-xs uppercase font-semibold text-neutral-500 hover:text-amber-500 transition-colors">LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Form Contatti -->
+        <div class="lg:col-span-7">
+          <div class="bg-white dark:bg-neutral-900 p-8 sm:p-10 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-xl transition-colors">
+            
+            <!-- Banner di successo -->
+            <div id="form-success-banner" class="hidden mb-6 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-sm flex items-center gap-3">
+              <svg class="w-5 h-5 flex-shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>Grazie per il tuo messaggio! Ti risponderò entro 24 ore lavorative.</span>
+            </div>
+
+            <!-- Banner di errore -->
+            <div id="form-error-banner" class="hidden mb-6 p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-300 text-sm flex items-center gap-3">
+              <svg class="w-5 h-5 flex-shrink-0 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>Si è verificato un errore durante l'invio. Verifica i dati o scrivimi direttamente a info@luminastudio.com.</span>
+            </div>
+
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+              <!-- Sostituisci YOUR_ACCESS_KEY_HERE con la tua chiave gratuita da https://web3forms.com/ -->
+              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+              <input type="hidden" name="subject" value="Nuova richiesta di contatto dal Portfolio">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Nome -->
+                <div>
+                  <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-2">
+                    Nome e Cognome *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    required 
+                    placeholder="es. Marco Rossi"
+                    class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all text-sm"
+                  />
+                </div>
+
+                <!-- Email -->
+                <div>
+                  <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-2">
+                    Indirizzo Email *
+                  </label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    placeholder="es. marco@esempio.it"
+                    class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all text-sm"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Servizio -->
+                <div>
+                  <label for="service" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-2">
+                    Tipologia di Servizio
+                  </label>
+                  <select 
+                    id="service" 
+                    name="service"
+                    class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all text-sm"
+                  >
+                    <option value="ritratti">Ritratto / Book Personale</option>
+                    <option value="commerciale">Campagna Commerciale / Brand</option>
+                    <option value="eventi">Evento / Matrimonio Fine Art</option>
+                    <option value="architettura">Architettura & Interior</option>
+                    <option value="stampe">Acquisto Stampe Limitate</option>
+                    <option value="altro">Altro</option>
+                  </select>
+                </div>
+
+                <!-- Budget -->
+                <div>
+                  <label for="budget" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-2">
+                    Budget Stimato
+                  </label>
+                  <select 
+                    id="budget" 
+                    name="budget"
+                    class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all text-sm"
+                  >
+                    <option value="500-1000">€500 - €1.000</option>
+                    <option value="1000-2500">€1.000 - €2.500</option>
+                    <option value="2500-5000">€2.500 - €5.000</option>
+                    <option value="5000+">Oltre €5.000</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Messaggio -->
+              <div>
+                <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-2">
+                  Dettagli del Progetto *
+                </label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="4" 
+                  required 
+                  placeholder="Descrivi la tua idea, luogo preferito, date previste o richieste specifiche..."
+                  class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all text-sm"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full py-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-amber-400 dark:hover:bg-amber-300 dark:text-neutral-950 font-bold text-sm tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                Invia Richiesta
+              </button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+  <footer class="py-12 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-100 dark:bg-neutral-950 text-neutral-500 text-xs transition-colors">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2 font-serif text-base text-neutral-900 dark:text-white font-bold">
+        <span>LUMINA STUDIO</span>
+        <span class="text-xs font-sans font-normal text-neutral-400">© 2026 Tutti i diritti riservati.</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-amber-500 transition-colors">Torna in Alto ↑</a>
+        <a href="#" class="hover:text-amber-500 transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-amber-500 transition-colors">Termini di Servizio</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================
+       LIGHTBOX MODALE A SCHERMO INTERO CON DETTAGLI EXIF
+       ====================================================== -->
+  <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Visualizzatore immagine">
+    
+    <!-- Pulsante Chiudi -->
+    <button id="lightbox-close" class="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-md transition-colors" aria-label="Chiudi visualizzatore">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Contatore Immagine -->
+    <div id="lightbox-counter" class="absolute top-6 left-6 z-50 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white/90 text-xs font-mono">
+      1 / 9
+    </div>
+
+    <!-- Pulsante Precedente -->
+    <button id="lightbox-prev" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-md transition-all hover:scale-110" aria-label="Immagine precedente">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+
+    <!-- Pulsante Successivo -->
+    <button id="lightbox-next" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-md transition-all hover:scale-110" aria-label="Immagine successiva">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+
+    <!-- Wrapper Immagine e Metadati -->
+    <div id="lightbox-img-wrapper" class="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center">
+      <img id="lightbox-img" src="" alt="" class="max-h-[72vh] max-w-full object-contain rounded-lg shadow-2xl">
+      
+      <!-- Box Metadati e Dettagli Scatto -->
+      <div class="mt-4 text-center text-white max-w-2xl px-4">
+        <h3 id="lightbox-title" class="font-serif text-lg sm:text-2xl font-bold text-neutral-100"></h3>
+        <p id="lightbox-subtitle" class="text-xs sm:text-sm text-neutral-300 font-light mt-0.5"></p>
+        
+        <div class="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] font-mono text-amber-300">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span id="lightbox-camera"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript Principale -->
+  <script src="app.js"></script>
+</body>
+</html>
